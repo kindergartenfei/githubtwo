@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .bi {
+            width: 600px;
+            height: 600px;
+            border: 10px solid;
+            margin: 50px auto;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .bi::after {
+            display: block;
+            content: '';
+            width: 20px;
+            height: 20px;
+            background-color: black;
+            border-radius: 50%;
+            position: absolute;
+            top: 290px;
+            left: 290px;
+        }
+
+        .kd {
+            width: 10px;
+            height: 20px;
+            background-color: green;
+            position: absolute;
+            top: 0;
+            left: 300px;
+            transform-origin: 0px 300px;
+            /* transform: rotate(30deg); */
+        }
+
+        .miao {
+            width: 4px;
+            height: 200px;
+            background-color: red;
+            position: absolute;
+            top: 120px;
+            left: 298px;
+            transform-origin: 2px 180px;
+            /* transform: rotate(232deg); */
+        }
+
+        .fen {
+            width: 6px;
+            height: 160px;
+            background-color: green;
+            position: absolute;
+            top: 160px;
+            left: 297px;
+            transform-origin: 3px 140px;
+            transform: rotate(232deg);
+        }
+
+
+        .shi {
+            width: 8px;
+            height: 120px;
+            background-color: blue;
+            position: absolute;
+            top: 200px;
+            left: 296px;
+            transform-origin: 4px 100px;
+            /* transform: rotate(232deg); */
+        }
+
+        .sz {
+            width: 100px;
+            line-height: 60px;
+            font-size: 25px;
+            position: absolute;
+            text-align: center;
+            top: 0;
+            left: 250px;
+            transform-origin: 50px 300px;
+            /* transform: rotate(232deg); */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bi"></div>
+</body>
+<script>
+    var div = document.getElementsByTagName('div')[0];
+    //创建刻度
+    for (var i = 1; i <= 60; i++) {
+        var x = document.createElement('div');
+        x.className = 'kd';
+        div.appendChild(x);
+        x.style.transform = 'rotate(' + i * 6 + 'deg' + ')'
+    }
+    //创建数字
+    for (var i = 1; i <= 12; i++) {
+        console.log(i);
+        var sz = document.createElement('div');
+        sz.className = 'sz';
+        sz.innerText = i;
+        div.appendChild(sz);
+        sz.style.transform = 'rotate(' + i * 30 + 'deg' + ')'
+    }
+
+
+
+    //miao
+    var miao = document.createElement('div');
+    miao.className = 'miao';
+    div.appendChild(miao);
+    var times = new Date();
+    var hours = times.getHours();
+    var minudes = times.getMinutes();
+    var seconds = times.getSeconds();
+    miao.style.transform = 'rotate(' + seconds * 6 + 'deg' + ')';
+    setInterval(function () {
+        var times = new Date();
+        var seconds = times.getSeconds();
+        miao.style.transform = 'rotate(' + seconds * 6 + 'deg' + ')';
+    }, 10)
+
+
+    //fen
+    var fen = document.createElement('div');
+    fen.className = 'fen';
+    div.appendChild(fen);
+    var times = new Date();
+    var hours = times.getHours();
+    var minutes = times.getMinutes();
+    var seconds = times.getSeconds();
+    fen.style.transform = 'rotate(' + minutes * 6 + seconds / 10 + 'deg' + ')';
+    setInterval(function () {
+        var times = new Date();
+        var hours = times.getHours();
+        var minutes = times.getMinutes();
+        var seconds = times.getSeconds();
+        fen.style.transform = 'rotate(' + minutes * 6 + seconds / 10 + 'deg' + ')';
+    }, 10)
+
+
+    //shi
+    var shi = document.createElement('div');
+    shi.className = 'shi';
+    div.appendChild(shi);
+    var times = new Date();
+    var hours = times.getHours();
+    var minutes = times.getMinutes();
+    var seconds = times.getSeconds();
+    shi.style.transform = 'rotate(' + hours * 30 + minutes / 2 + seconds / 120 + 'deg' + ')';
+    setInterval(function () {
+        var times = new Date();
+        var hours = times.getHours();
+        var minutes = times.getMinutes();
+        var seconds = times.getSeconds();
+        shi.style.transform = 'rotate(' + hours * 30 + minutes / 2 + seconds / 120 + 'deg' + ')';
+    }, 10)
+
+
+</script>
+
+</html>
